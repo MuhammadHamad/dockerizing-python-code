@@ -1,21 +1,34 @@
-print("Welcome to the calcular program!")
+def get_number(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
 
-first_number = int(input("Please enter the first number "))
-second_number = int(input("Please enter the second number "))
+def perform_operation(first_number, second_number, operation):
+    if operation == "+":
+        return first_number + second_number
+    elif operation == "-":
+        return first_number - second_number
+    elif operation == "*":
+        return first_number * second_number
+    elif operation == "/":
+        if second_number == 0:
+            return "Error: Division by zero is not allowed."
+        return first_number / second_number
+    else:
+        return "Unknown operation."
 
-operation = input("Please enter the operation you want to execute ")
+def main():
+    print("Welcome to the calculator program!")
 
-if operation == "+":
-    print(f"The addition of the numbers is {first_number + second_number}")
+    first_number = get_number("Please enter the first number: ")
+    second_number = get_number("Please enter the second number: ")
 
-elif operation == "-":
-    print(f"The subtraction of the numbers is {first_number - second_number}")
+    operation = input("Please enter the operation you want to execute (+, -, *, /): ")
 
-elif operation == "*":
-    print(f"The multiplication of the numbers is {first_number * second_number}")
+    result = perform_operation(first_number, second_number, operation)
+    print(f"The result is: {result}")
 
-elif operation == "/":
-    print(f"The division of the numbers is {first_number / second_number}")
-          
-else:
-    print(f"Unknown operation")
+if __name__ == "__main__":
+    main()
