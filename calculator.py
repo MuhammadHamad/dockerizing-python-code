@@ -1,11 +1,15 @@
+import math
+
 def get_number(prompt):
+    """Prompts the user for a number, ensuring it's a valid integer."""
     while True:
         try:
             return int(input(prompt))
         except ValueError:
-            print("Invalid input. Please enter a valid integer.")
+            print("Invalid input. Please enter an integer.")
 
 def perform_operation(first_number, second_number, operation):
+    """Performs the specified arithmetic operation."""
     if operation == "+":
         return first_number + second_number
     elif operation == "-":
@@ -16,19 +20,34 @@ def perform_operation(first_number, second_number, operation):
         if second_number == 0:
             return "Error: Division by zero is not allowed."
         return first_number / second_number
+    elif operation == "^":
+        return math.pow(first_number, second_number)
     else:
         return "Unknown operation."
 
 def main():
-    print("Welcome to the calculator program!")
+    """Main function for the calculator program."""
+    print("Welcome to the enhanced calculator!")
 
-    first_number = get_number("Please enter the first number: ")
-    second_number = get_number("Please enter the second number: ")
+    while True:
+        first_number = get_number("Please enter the first number: ")
+        second_number = get_number("Please enter the second number: ")
 
-    operation = input("Please enter the operation you want to execute (+, -, *, /): ")
+        print("Available operations:")
+        print("+: Addition")
+        print("-: Subtraction")
+        print("*: Multiplication")
+        print("/: Division")
+        print("^: Exponentiation")
 
-    result = perform_operation(first_number, second_number, operation)
-    print(f"The result is: {result}")
+        operation = input("Please enter the operation you want to execute: ")
+
+        result = perform_operation(first_number, second_number, operation)
+        print(f"The result is: {result}")
+
+        choice = input("Do you want to perform another calculation? (yes/no): ")
+        if choice.lower() != "yes":
+            break
 
 if __name__ == "__main__":
     main()
