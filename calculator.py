@@ -1,33 +1,48 @@
 import math
 
 def get_number(prompt):
-    """Prompts the user for a number, ensuring it's a valid integer."""
+    """Prompts the user for a number, ensuring it's a valid float."""
     while True:
         try:
-            return int(input(prompt))
+            return float(input(prompt))
         except ValueError:
-            print("Invalid input. Please enter an integer.")
+            print("Invalid input. Please enter a valid number.")
+
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        return "Error: Division by zero is not allowed."
+    return x / y
+
+def exponentiate(x, y):
+    return math.pow(x, y)
 
 def perform_operation(first_number, second_number, operation):
     """Performs the specified arithmetic operation."""
-    if operation == "+":
-        return first_number + second_number
-    elif operation == "-":
-        return first_number - second_number
-    elif operation == "*":
-        return first_number * second_number
-    elif operation == "/":
-        if second_number == 0:
-            return "Error: Division by zero is not allowed."
-        return first_number / second_number
-    elif operation == "^":
-        return math.pow(first_number, second_number)
+    operations = {
+        "+": add,
+        "-": subtract,
+        "*": multiply,
+        "/": divide,
+        "^": exponentiate
+    }
+    func = operations.get(operation)
+    if func:
+        return func(first_number, second_number)
     else:
-        return "Unknown operation."
+        return "Error: Unknown operation."
 
 def main():
     """Main function for the calculator program."""
-    print("Welcome to the enhanced calculator!")
+    print("Welcome to the calculator!")
 
     while True:
         first_number = get_number("Please enter the first number: ")
