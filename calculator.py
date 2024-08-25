@@ -1,5 +1,6 @@
 import math
 
+
 def get_number(prompt):
     """Prompts the user for a number, ensuring it's a valid float."""
     while True:
@@ -8,22 +9,28 @@ def get_number(prompt):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+
 def add(x, y):
     return x + y
+
 
 def subtract(x, y):
     return x - y
 
+
 def multiply(x, y):
     return x * y
+
 
 def divide(x, y):
     if y == 0:
         return "Error: Division by zero is not allowed."
     return x / y
 
+
 def exponentiate(x, y):
     return math.pow(x, y)
+
 
 def perform_operation(first_number, second_number, operation):
     """Performs the specified arithmetic operation."""
@@ -39,6 +46,7 @@ def perform_operation(first_number, second_number, operation):
         return func(first_number, second_number)
     else:
         return "Error: Unknown operation."
+
 
 def main():
     """Main function for the calculator program."""
@@ -60,12 +68,11 @@ def main():
         result = perform_operation(first_number, second_number, operation)
         print(f"The result is: {result}")
 
-        choice = input("Do you want to perform another calculation? (yes/no): ")
+        choice = input(
+            "Do you want to perform another calculation? (yes/no): ")
         if choice.lower() != "yes":
             break
 
+
 if __name__ == "__main__":
     main()
-
-
-
